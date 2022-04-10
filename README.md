@@ -22,3 +22,6 @@ quasar build
 
 ### Customize the configuration
 See [Configuring quasar.conf.js](https://v1.quasar.dev/quasar-cli/quasar-conf-js).
+
+### Design in figma
+https://www.figma.com/file/mtpHW6Jj6d5byowgtEujBQ/ElifTech-Mortgage-Calculator?node-id=0%3A1
