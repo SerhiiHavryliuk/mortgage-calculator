@@ -5,18 +5,64 @@
       payments using one of these bank’s settings.
     </p>
     <div class="btn-add-new-bank">
-      <q-btn class="q-mb-md" color="primary" icon="add_circle" label="add new bank"></q-btn>
+      <q-btn class="q-mb-md" color="primary" icon="add_circle" label="add new bank" @click="openModalDialogAddNewBank()"></q-btn>
     </div>
 
+    <!-- ----------------------------------------------------------------------------------------------------------- -->
+    <!--    Таблиця банків    -->
+    <!-- ----------------------------------------------------------------------------------------------------------- -->
     <template>
       <div class="">
         <q-table
-          title="Bank name"
+          title="List of banks"
           :data="data"
           :columns="columns"
           row-key="name"></q-table>
       </div>
     </template>
+
+    <!-- ----------------------------------------------------------------------------------------------------------- -->
+    <!--    Модальне вікно для додавання нового банку    -->
+    <!-- ----------------------------------------------------------------------------------------------------------- -->
+    <q-dialog v-model="modalDialogAddNewBank">
+      <q-card class="spike-materials">
+        <q-card-section class="row items-center q-pb-none">
+
+          <div class="text-h6">Add new bank</div>
+          <q-space></q-space>
+<!--          <q-btn icon="close" flat round dense v-close-popup @click="cancelTeacherMode()"></q-btn>-->
+        </q-card-section>
+
+        <!-- ------------------------------------------------------------------------------------------------------------------ -->
+        <!--  Компонент материалы учителя -->
+        <!-- ------------------------------------------------------------------------------------------------------------------ -->
+<!--        <form_add_new_Bank></form_add_new_Bank>-->
+        <template>
+          <q-card-section>
+            <template>
+              <div class="q-pa-md" style="max-width: 600px; min-width: 260px">
+
+                <q-input class="q-mb-md" outlined v-model="bankName" label="Bank name"></q-input>
+                <q-input class="q-mb-md" outlined v-model="interestRate" label="Interest rate" type="number"></q-input>
+                <q-input class="q-mb-md" outlined v-model="maximumLoan" label="Maximum loan" type="number"></q-input>
+                <q-input class="q-mb-md" outlined v-model="minimumDownPayment" label="Minimum down payment" type="number"></q-input>
+                <q-input class="q-mb-md" outlined v-model="loanTerm" label="Loan term" type="number"></q-input>
+
+                <div class="dialog-btn-add-new-bank">
+                  <q-btn color="primary" label="Add" @click="addNewBank()"></q-btn>
+                </div>
+
+
+              </div>
+            </template>
+          </q-card-section>
+        </template>
+      </q-card>
+    </q-dialog>
+
+
+
+
 <!--    <img-->
 <!--      alt="Quasar logo"-->
 <!--      src="~assets/quasar-logo-vertical.svg"-->
@@ -34,14 +80,27 @@
 <script>
   import PageIndex from "./Calc";
   export default {
-    components: {PageIndex},
+    components: {
+      PageIndex,
+      // 'form_add_new_Bank': require('src/components/FormAddNewBankComponent.vue').default,
+    },
     data () {
       return {
+        modalDialogAddNewBank: false, // за замовчанням закриваємо діалогове вікно
+
+        // значення текстових полів у формі
+        bankName: '',
+        interestRate: '',
+        maximumLoan: '',
+        minimumDownPayment: '',
+        loanTerm: '',
+        // значення текстових полів у формі
+
         columns: [
           {
             name: 'name',
             required: true,
-            label: 'Dessert (100g serving)',
+            label: 'Bank Name',
             align: 'left',
             field: row => row.name,
             format: val => `${val}`,
@@ -130,6 +189,16 @@
             iron: '6%'
           }
         ]
+      }
+    },
+    methods: {
+      // Метод відкриття модального вікна
+      openModalDialogAddNewBank(){
+        this.modalDialogAddNewBank = true;
+      },
+      // Метод для додавання нового банку
+      addNewBank(){
+        this.modalDialogAddNewBank = false; // закриваємо модальне вікно
       }
     }
   }
