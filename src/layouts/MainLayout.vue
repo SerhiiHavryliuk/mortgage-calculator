@@ -8,14 +8,13 @@
           round
           icon="menu"
           aria-label="Menu"
-          @click="leftDrawerOpen = !leftDrawerOpen"
-        />
+          @click="leftDrawerOpen = !leftDrawerOpen"></q-btn>
 
         <q-toolbar-title>
-          Quasar App
+          MyBanking
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+
       </q-toolbar>
     </q-header>
 
@@ -32,16 +31,45 @@
         >
           Essential Links
         </q-item-label>
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
+        <!--  -------------------------------------------------------------------------------------------------------------- -->
+        <!--  Banks  -->
+        <!--  -------------------------------------------------------------------------------------------------------------- -->
+        <q-item v-ripple clickable to="/">
+          <q-item-section avatar>
+            <q-icon color="black" name="account_balance"></q-icon>
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Banks</q-item-label>
+          </q-item-section>
+        </q-item>
+
+        <!--  -------------------------------------------------------------------------------------------------------------- -->
+        <!--  Mortgage Calculator  -->
+        <!--  -------------------------------------------------------------------------------------------------------------- -->
+        <q-item v-ripple clickable to="/calc">
+          <q-item-section avatar>
+            <q-icon color="black" name="calculate"></q-icon>
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Mortgage Calculator</q-item-label>
+          </q-item-section>
+        </q-item>
+
+
+        <!--  -------------------------------------------------------------------------------------------------------------- -->
+        <!--  WebApp Version  -->
+        <!--  -------------------------------------------------------------------------------------------------------------- -->
+        <p class="q-pa-md"><strong>App Version - {{appVersion}}</strong></p>
+<!--        <EssentialLink-->
+<!--          v-for="link in essentialLinks"-->
+<!--          :key="link.title"-->
+<!--          v-bind="link"-->
+<!--        />-->
       </q-list>
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <router-view></router-view>
     </q-page-container>
   </q-layout>
 </template>
@@ -102,7 +130,8 @@ export default {
   data () {
     return {
       leftDrawerOpen: false,
-      essentialLinks: linksData
+      essentialLinks: linksData,
+      appVersion: "2022.0", // Текущая версия ПО
     }
   }
 }

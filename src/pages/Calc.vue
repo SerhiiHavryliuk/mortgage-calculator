@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    <h3> Banks </h3>
+    <h3> Mortgage Calculator </h3>
 <!--    <img-->
 <!--      alt="Quasar logo"-->
 <!--      src="~assets/quasar-logo-vertical.svg"-->
