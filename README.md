@@ -1,6 +1,6 @@
 # Mortgage calculator App (mortgagecalculator)
 
-web application where users can create banks and calculate mortgagepayments using one of these bank’s settings
+Web application where users can create banks and calculate mortgagepayments using one of these bank’s settings
 
 ## Install the dependencies
 ```bash
@@ -22,6 +22,9 @@ quasar build
 
 ### Customize the configuration
 See [Configuring quasar.conf.js](https://v1.quasar.dev/quasar-cli/quasar-conf-js).
+
+### Deploy application in cloud platform (vercel.com)
+See [Mortgage calculator App](https://mortgage-calculator-eta.vercel.app/).
 
 ### Design in figma
 https://www.figma.com/file/mtpHW6Jj6d5byowgtEujBQ/ElifTech-Mortgage-Calculator?node-id=0%3A1
